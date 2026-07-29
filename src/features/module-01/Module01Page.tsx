@@ -6,6 +6,7 @@ import { QueryActivity } from '@/features/activity/QueryActivity'
 import { EngineeringInsight } from '@/features/module-01/panels/EngineeringInsight'
 import { VisualDiagram } from '@/features/module-01/panels/VisualDiagram'
 import { SourceCodePanel } from '@/features/module-01/panels/SourceCodePanel'
+import { ModuleSummary } from '@/features/module-01/panels/ModuleSummary'
 import type { PokemonDetail } from '@/shared/types/pokemon'
 
 export function Module01Page() {
@@ -22,6 +23,7 @@ export function Module01Page() {
           </p>
         </div>
         <PokemonGrid onSelect={setSelected} />
+        <ModuleSummary />
       </div>
 
       {/* Right: Educational panels */}
@@ -35,6 +37,7 @@ export function Module01Page() {
                 ''
               }
               alt={selected.name}
+              loading="eager"
               className="mx-auto h-28 w-28"
             />
             <p className="mt-2 text-lg font-bold capitalize text-gray-900">{selected.name}</p>
