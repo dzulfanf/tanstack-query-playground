@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { PokemonGrid } from '@/features/pokemon/PokemonGrid'
+import { QueryInspector } from '@/features/inspector/QueryInspector'
 import type { PokemonDetail } from '@/shared/types/pokemon'
 
 export function Module01Page() {
@@ -18,23 +19,20 @@ export function Module01Page() {
         <PokemonGrid onSelect={setSelected} />
       </div>
 
-      {/* Right: Panels placeholder — filled in Tasks 6–9 */}
-      <aside className="w-80 shrink-0">
-        <div className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm">
-          {selected ? (
-            <div className="text-center">
-              <img
-                src={selected.sprites.other['official-artwork'].front_default ?? selected.sprites.front_default ?? ''}
-                alt={selected.name}
-                className="mx-auto h-28 w-28"
-              />
-              <p className="mt-2 text-lg font-bold capitalize text-gray-900">{selected.name}</p>
-              <p className="text-sm text-gray-400">#{String(selected.id).padStart(3, '0')}</p>
-            </div>
-          ) : (
-            <p className="text-center text-sm text-gray-400">Select a Pokemon to inspect its query state</p>
-          )}
-        </div>
+      {/* Right: Inspector panels */}
+      <aside className="w-80 shrink-0 space-y-4">
+        {selected && (
+          <div className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm text-center">
+            <img
+              src={selected.sprites.other['official-artwork'].front_default ?? selected.sprites.front_default ?? ''}
+              alt={selected.name}
+              className="mx-auto h-28 w-28"
+            />
+            <p className="mt-2 text-lg font-bold capitalize text-gray-900">{selected.name}</p>
+            <p className="text-sm text-gray-400">#{String(selected.id).padStart(3, '0')}</p>
+          </div>
+        )}
+        <QueryInspector />
       </aside>
     </div>
   )
