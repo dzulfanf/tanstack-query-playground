@@ -1,5 +1,6 @@
 import { createRootRoute, createRoute, createRouter, redirect } from '@tanstack/react-router'
 import { RootLayout } from '@/app/layout/RootLayout'
+import { Module01Page } from '@/features/module-01/Module01Page'
 
 const rootRoute = createRootRoute({
   component: RootLayout,
@@ -16,11 +17,7 @@ const indexRoute = createRoute({
 export const module01Route = createRoute({
   getParentRoute: () => rootRoute,
   path: '/module/01',
-  component: () => (
-    <div className="p-8">
-      <p className="text-gray-500">Module 01 — coming in Task 5</p>
-    </div>
-  ),
+  component: Module01Page,
 })
 
 const routeTree = rootRoute.addChildren([indexRoute, module01Route])
