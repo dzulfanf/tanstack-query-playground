@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { PokemonGrid } from '@/features/pokemon/PokemonGrid'
 import { QueryInspector } from '@/features/inspector/QueryInspector'
+import { QueryActivity } from '@/features/activity/QueryActivity'
 import type { PokemonDetail } from '@/shared/types/pokemon'
 
 export function Module01Page() {
@@ -33,6 +34,7 @@ export function Module01Page() {
           </div>
         )}
         <QueryInspector />
+        <QueryActivity />
       </aside>
     </div>
   )
