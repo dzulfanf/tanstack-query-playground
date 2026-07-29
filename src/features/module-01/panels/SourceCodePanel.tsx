@@ -1,7 +1,8 @@
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
-const CODE = `import { useQuery } from '@tanstack/react-query'
+const CODE = `// Simplified for learning — real implementation uses two queries
+import { useQuery } from '@tanstack/react-query'
 
 function PokemonGrid() {
   const { data, isPending, isError, error } = useQuery({

@@ -3,7 +3,7 @@ const TAKEAWAYS = [
   { emoji: '📊', text: 'isPending is true only on the very first load. isError/isSuccess reflect the result.' },
   { emoji: '💾', text: 'Data is stored in Query Cache automatically. No useState needed.' },
   { emoji: '⚡', text: 'Second visit = instant render from cache, not a new network request.' },
-  { emoji: '🔄', text: 'TanStack Query retries failed requests automatically (default: 3 times).' },
+  { emoji: '🔄', text: 'TanStack Query retries failed requests automatically. This playground uses 1 retry (library default is 3).' },
 ]
 
 export function ModuleSummary() {
