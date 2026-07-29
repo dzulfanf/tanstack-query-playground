@@ -5,12 +5,17 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { RouterProvider } from '@tanstack/react-router'
 import { queryClient } from '@/shared/lib/query-client'
 import { router } from '@/app/router'
+import { LearningModeProvider } from '@/shared/hooks/use-learning-mode'
+import { Toaster } from '@/components/ui/sonner'
 import '@/index.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
+      <LearningModeProvider>
+        <RouterProvider router={router} />
+        <Toaster position="bottom-right" />
+      </LearningModeProvider>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   </StrictMode>,
