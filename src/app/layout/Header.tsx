@@ -3,8 +3,8 @@ import { useLearningMode } from '@/shared/hooks/use-learning-mode'
 
 const MODULES = [
   { id: '01', label: 'Query Basics', path: '/module/01' },
-  { id: '02', label: 'Query Cache', path: '/module/02', disabled: true },
-  { id: '03', label: 'Query Keys', path: '/module/03', disabled: true },
+  { id: '02', label: 'Query Cache', path: '/module/02' },
+  { id: '03', label: 'Query Keys', path: '/module/03' },
 ]
 
 export function Header() {
@@ -19,24 +19,15 @@ export function Header() {
         </div>
 
         <nav className="flex gap-1">
-          {MODULES.map((mod) =>
-            mod.disabled ? (
-              <span
-                key={mod.id}
-                className="cursor-not-allowed rounded-full px-4 py-1.5 text-sm font-medium text-gray-300"
-              >
-                {mod.label}
-              </span>
-            ) : (
-              <Link
-                key={mod.id}
-                to={mod.path}
-                className="rounded-full px-4 py-1.5 text-sm font-medium text-gray-600 transition hover:bg-blue-50 hover:text-blue-600 [&.active]:bg-blue-500 [&.active]:text-white"
-              >
-                {mod.label}
-              </Link>
-            ),
-          )}
+          {MODULES.map((mod) => (
+            <Link
+              key={mod.id}
+              to={mod.path}
+              className="rounded-full px-4 py-1.5 text-sm font-medium text-gray-600 transition hover:bg-blue-50 hover:text-blue-600 [&.active]:bg-blue-500 [&.active]:text-white"
+            >
+              {mod.label}
+            </Link>
+          ))}
         </nav>
 
         <button
