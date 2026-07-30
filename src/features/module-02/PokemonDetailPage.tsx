@@ -7,6 +7,9 @@ import { QueryInspector } from '@/features/inspector/QueryInspector'
 import { QueryActivity } from '@/features/activity/QueryActivity'
 import { LoadingSkeleton } from '@/features/pokemon/LoadingSkeleton'
 import { ErrorState } from '@/features/pokemon/ErrorState'
+import { EngineeringInsight02 } from '@/features/module-02/panels/EngineeringInsight02'
+import { VisualDiagram02 } from '@/features/module-02/panels/VisualDiagram02'
+import { SourceCodePanel02 } from '@/features/module-02/panels/SourceCodePanel02'
 import type { PokemonDetail } from '@/shared/types/pokemon'
 
 const TYPE_COLORS: Record<string, string> = {
@@ -144,13 +147,13 @@ export function PokemonDetailPage() {
             <QueryActivity />
           </TabsContent>
           <TabsContent value="insight">
-            <EngineeringInsight02Stub />
+            <EngineeringInsight02 />
           </TabsContent>
           <TabsContent value="diagram">
-            <VisualDiagram02Stub cacheStatus={cacheStatus} />
+            <VisualDiagram02 cacheStatus={cacheStatus} />
           </TabsContent>
           <TabsContent value="code">
-            <SourceCodePanel02Stub />
+            <SourceCodePanel02 />
           </TabsContent>
         </Tabs>
       </aside>
@@ -158,25 +161,3 @@ export function PokemonDetailPage() {
   )
 }
 
-// Temporary stubs — Task 3 replaces these with real imports from ./panels/
-function EngineeringInsight02Stub() {
-  return (
-    <div className="rounded-2xl border border-gray-100 bg-white p-4 text-xs text-gray-400">
-      Insight panel — added in Task 3
-    </div>
-  )
-}
-function VisualDiagram02Stub(_: { cacheStatus?: 'hit' | 'miss' }) {
-  return (
-    <div className="rounded-2xl border border-gray-100 bg-white p-4 text-xs text-gray-400">
-      Diagram panel — added in Task 3
-    </div>
-  )
-}
-function SourceCodePanel02Stub() {
-  return (
-    <div className="rounded-2xl border border-gray-100 bg-white p-4 text-xs text-gray-400">
-      Source panel — added in Task 3
-    </div>
-  )
-}
