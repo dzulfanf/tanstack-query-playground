@@ -32,7 +32,7 @@ export function Module01Page() {
       {/* Right: Educational panels */}
       <aside className="w-full lg:w-80 lg:shrink-0">
         {selected && (
-          <div className="hidden lg:block mb-4 rounded-2xl border border-gray-100 bg-white p-4 shadow-sm text-center">
+          <div className="hidden lg:block mb-4 rounded-2xl glass-panel p-4 text-center">
             <img
               src={
                 selected.sprites.other['official-artwork'].front_default ??

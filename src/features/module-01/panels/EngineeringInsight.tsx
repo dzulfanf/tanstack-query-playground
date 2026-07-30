@@ -29,11 +29,11 @@ const SECTIONS: InsightSection[] = [
 
 export function EngineeringInsight() {
   return (
-    <div className="rounded-2xl border border-gray-100 bg-white shadow-sm">
-      <div className="border-b border-gray-100 px-4 py-3">
+    <div className="rounded-2xl glass-panel">
+      <div className="border-b border-white/25 px-4 py-3">
         <h3 className="text-sm font-bold text-gray-900">🧩 Engineering Insight</h3>
       </div>
-      <div className="divide-y divide-gray-50 px-4">
+      <div className="divide-y divide-white/20 px-4">
         {SECTIONS.map((s) => (
           <div key={s.label} className="py-3">
             <p className="mb-1 text-xs font-semibold text-gray-500">

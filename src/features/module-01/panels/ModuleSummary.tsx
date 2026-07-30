@@ -8,15 +8,15 @@ const TAKEAWAYS = [
 
 export function ModuleSummary() {
   return (
-    <div className="mt-8 rounded-2xl border border-blue-100 bg-blue-50 p-6">
+    <div className="mt-8 rounded-2xl border border-blue-200/40 bg-blue-100/30 backdrop-blur-[12px] p-6">
       <h2 className="mb-4 text-lg font-bold text-blue-900">✅ Module 01 Summary</h2>
 
       <div className="mb-4 grid gap-2 sm:grid-cols-2">
-        <div className="rounded-xl bg-white p-4 shadow-sm">
+        <div className="rounded-xl bg-white/40 p-4">
           <p className="mb-1 text-xs font-semibold text-gray-500 uppercase tracking-wide">Problem</p>
           <p className="text-sm text-gray-700">React has no built-in server state cache. Every render fetches fresh.</p>
         </div>
-        <div className="rounded-xl bg-white p-4 shadow-sm">
+        <div className="rounded-xl bg-white/40 p-4">
           <p className="mb-1 text-xs font-semibold text-gray-500 uppercase tracking-wide">Solution</p>
           <p className="text-sm text-gray-700">useQuery caches the response by queryKey and reuses it across components and navigations.</p>
         </div>
