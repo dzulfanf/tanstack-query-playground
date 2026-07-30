@@ -47,7 +47,7 @@ export function PokemonGrid({ onSelect }: Props) {
   }
 
   return (
-    <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+    <div className="grid grid-cols-4 gap-3">
       {pokemon.map((p) => (
         <PokemonCard key={p.id} pokemon={p} onClick={onSelect} />
       ))}

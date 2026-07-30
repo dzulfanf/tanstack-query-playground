@@ -35,22 +35,22 @@ export function PokemonCard({ pokemon, onClick }: Props) {
   return (
     <Card
       onClick={() => onClick(pokemon)}
-      className="group cursor-pointer rounded-2xl border border-gray-100 bg-white p-4 shadow-sm transition hover:shadow-md hover:border-blue-200"
+      className="group cursor-pointer rounded-2xl border border-gray-100 bg-white p-3 shadow-sm transition hover:shadow-md hover:border-blue-200"
     >
-      <div className="mb-2 flex h-24 items-center justify-center rounded-xl bg-gray-50">
+      <div className="flex h-20 items-center justify-center rounded-xl bg-gray-50">
         {sprite ? (
           <img
             src={sprite}
             alt={pokemon.name}
-            className="h-20 w-20 object-contain transition group-hover:scale-110"
+            className="h-16 w-16 object-contain transition group-hover:scale-110"
           />
         ) : (
           <span className="text-4xl">❓</span>
         )}
       </div>
-      <p className="text-center text-xs font-medium text-gray-400">#{String(pokemon.id).padStart(3, '0')}</p>
+      <p className="mt-1 text-center text-xs text-gray-400">#{String(pokemon.id).padStart(3, '0')}</p>
       <p className="text-center text-sm font-semibold capitalize text-gray-800">{pokemon.name}</p>
-      <div className="mt-2 flex flex-wrap justify-center gap-1">
+      <div className="mt-1.5 flex flex-wrap justify-center gap-1">
         {pokemon.types.map((t) => (
           <span
             key={t.type.name}
