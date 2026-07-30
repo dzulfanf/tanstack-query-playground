@@ -14,7 +14,7 @@ export function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 border-b border-gray-100 bg-white shadow-sm">
+    <header className="relative sticky top-0 z-50 border-b border-gray-100 bg-white shadow-sm">
       <div className="mx-auto flex max-w-7xl items-center gap-2 px-4 py-3 sm:gap-6 sm:px-6">
         <div className="flex items-center gap-2">
           <span className="text-2xl">⚡</span>
@@ -57,7 +57,7 @@ export function Header() {
       </div>
 
       {menuOpen && (
-        <div className="sm:hidden border-t border-gray-100 bg-white px-4 py-2">
+        <div className="sm:hidden absolute top-full left-0 right-0 border-t border-gray-100 bg-white shadow-md px-4 py-2">
           {MODULES.map((mod) => (
             <Link
               key={mod.id}

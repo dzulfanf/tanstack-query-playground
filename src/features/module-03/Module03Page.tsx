@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { SearchResults } from '@/features/module-03/SearchResults'
+import { PokemonBottomSheet } from '@/features/pokemon/PokemonBottomSheet'
 import { ModuleSummary03 } from '@/features/module-03/panels/ModuleSummary03'
 import { EngineeringInsight03 } from '@/features/module-03/panels/EngineeringInsight03'
 import { VisualDiagram03 } from '@/features/module-03/panels/VisualDiagram03'
@@ -33,9 +34,11 @@ export function Module03Page() {
         <ModuleSummary03 />
       </div>
 
+      {selected && <PokemonBottomSheet pokemon={selected} onClose={() => setSelected(null)} />}
+
       <aside className="w-full lg:w-80 lg:shrink-0">
         {selected && (
-          <div className="mb-4 rounded-2xl border border-gray-100 bg-white p-4 shadow-sm text-center">
+          <div className="hidden lg:block mb-4 rounded-2xl border border-gray-100 bg-white p-4 shadow-sm text-center">
             <img
               src={
                 selected.sprites.other['official-artwork'].front_default ??

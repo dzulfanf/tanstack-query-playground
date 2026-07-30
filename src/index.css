@@ -42,7 +42,13 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
+@keyframes slide-up {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
 @theme inline {
+  --animate-slide-up: slide-up 0.3s cubic-bezier(0.32, 0.72, 0, 1);
   --font-heading: var(--font-sans);
   --font-sans: 'Geist Variable', sans-serif;
   --color-sidebar-ring: var(--sidebar-ring);

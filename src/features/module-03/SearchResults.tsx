@@ -38,6 +38,7 @@ export function SearchResults({ search, onSelect }: Props) {
             <Skeleton className="mx-auto h-4 w-16" />
           </div>
         ))}
+
       </div>
     )
   }
@@ -55,7 +56,7 @@ export function SearchResults({ search, onSelect }: Props) {
   }
 
   return (
-    <div className="grid grid-cols-4 gap-3">
+    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
       {data.map((p) => (
         <PokemonCard key={p.name} pokemon={p} onClick={() => onSelect?.(p)} />
       ))}
