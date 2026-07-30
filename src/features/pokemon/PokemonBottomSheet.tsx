@@ -31,10 +31,10 @@ export function PokemonBottomSheet({ pokemon, onClose }: Props) {
   return (
     <div className="lg:hidden fixed inset-0 z-40 flex items-end">
       <div className="absolute inset-0 bg-black/30" onClick={onClose} />
-      <div className="relative w-full rounded-t-2xl bg-white shadow-xl animate-slide-up max-h-[85vh] overflow-y-auto">
+      <div className="relative w-full rounded-t-2xl bg-white/50 backdrop-blur-[16px] border border-white/55 shadow-xl animate-slide-up max-h-[85vh] overflow-y-auto">
 
         {/* Sticky header */}
-        <div className="sticky top-0 z-10 flex items-center justify-between rounded-t-2xl bg-white px-5 py-3 border-b border-gray-100">
+        <div className="sticky top-0 z-10 flex items-center justify-between rounded-t-2xl bg-white/50 backdrop-blur-[16px] px-5 py-3 border-b border-white/25">
           <div className="flex items-baseline gap-2">
             <p className="text-base font-bold capitalize text-gray-900">{pokemon.name}</p>
             <p className="text-sm text-gray-400">#{String(pokemon.id).padStart(3, '0')}</p>
@@ -78,13 +78,13 @@ export function PokemonBottomSheet({ pokemon, onClose }: Props) {
 
           {/* Height & Weight */}
           <div className="mt-3 grid grid-cols-2 gap-2">
-            <div className="rounded-xl bg-gray-50 p-2 text-center">
+            <div className="rounded-xl bg-white/30 p-2 text-center">
               <p className="text-xs font-medium uppercase tracking-wide text-gray-400">Height</p>
               <p className="text-base font-bold text-gray-800">
                 {(pokemon.height / 10).toFixed(1)}m
               </p>
             </div>
-            <div className="rounded-xl bg-gray-50 p-2 text-center">
+            <div className="rounded-xl bg-white/30 p-2 text-center">
               <p className="text-xs font-medium uppercase tracking-wide text-gray-400">Weight</p>
               <p className="text-base font-bold text-gray-800">
                 {(pokemon.weight / 10).toFixed(1)}kg
@@ -105,7 +105,7 @@ export function PokemonBottomSheet({ pokemon, onClose }: Props) {
                 <span className="w-7 text-right text-xs font-bold text-gray-800">
                   {s.base_stat}
                 </span>
-                <div className="flex-1 rounded-full bg-gray-100 h-1.5">
+                <div className="flex-1 rounded-full bg-white/40 h-1.5">
                   <div
                     className="h-1.5 rounded-full bg-blue-400 transition-all"
                     style={{ width: `${Math.min(100, (s.base_stat / 200) * 100)}%` }}
