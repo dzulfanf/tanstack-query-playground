@@ -1,4 +1,3 @@
-import { Card } from '@/components/ui/card'
 import type { PokemonDetail } from '@/shared/types/pokemon'
 
 const TYPE_COLORS: Record<string, string> = {
@@ -33,9 +32,9 @@ export function PokemonCard({ pokemon, onClick }: Props) {
     pokemon.sprites.front_default
 
   return (
-    <Card
+    <div
       onClick={() => onClick(pokemon)}
-      className="group cursor-pointer rounded-2xl border border-gray-100 bg-white p-3 shadow-sm transition hover:shadow-md hover:border-blue-200"
+      className="group cursor-pointer rounded-2xl border border-gray-100 bg-white p-3 shadow-sm transition hover:border-blue-200 hover:shadow-md"
     >
       <div className="flex h-20 items-center justify-center rounded-xl bg-gray-50">
         {sprite ? (
@@ -60,6 +59,6 @@ export function PokemonCard({ pokemon, onClick }: Props) {
           </span>
         ))}
       </div>
-    </Card>
+    </div>
   )
 }
