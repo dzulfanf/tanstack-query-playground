@@ -48,9 +48,9 @@ export function PokemonBottomSheet({ pokemon, onClose }: Props) {
           </button>
         </div>
 
-        <div className="px-6 pb-8">
+        <div className="px-5 pb-5">
           {/* Artwork */}
-          <div className="flex justify-center pt-2">
+          <div className="flex justify-center pt-1">
             <img
               src={
                 pokemon.sprites.other['official-artwork'].front_default ??
@@ -58,16 +58,16 @@ export function PokemonBottomSheet({ pokemon, onClose }: Props) {
                 ''
               }
               alt={pokemon.name}
-              className="h-36 w-36"
+              className="h-28 w-28"
             />
           </div>
 
           {/* Types */}
-          <div className="mt-3 flex justify-center gap-2">
+          <div className="mt-2 flex justify-center gap-2">
             {pokemon.types.map((t) => (
               <span
                 key={t.type.name}
-                className={`rounded-full px-3 py-1 text-sm font-medium capitalize ${
+                className={`rounded-full px-3 py-0.5 text-sm font-medium capitalize ${
                   TYPE_COLORS[t.type.name] ?? 'bg-gray-100 text-gray-600'
                 }`}
               >
@@ -77,26 +77,26 @@ export function PokemonBottomSheet({ pokemon, onClose }: Props) {
           </div>
 
           {/* Height & Weight */}
-          <div className="mt-4 grid grid-cols-2 gap-3">
-            <div className="rounded-xl bg-gray-50 p-3 text-center">
+          <div className="mt-3 grid grid-cols-2 gap-2">
+            <div className="rounded-xl bg-gray-50 p-2 text-center">
               <p className="text-xs font-medium uppercase tracking-wide text-gray-400">Height</p>
-              <p className="mt-1 text-lg font-bold text-gray-800">
+              <p className="text-base font-bold text-gray-800">
                 {(pokemon.height / 10).toFixed(1)}m
               </p>
             </div>
-            <div className="rounded-xl bg-gray-50 p-3 text-center">
+            <div className="rounded-xl bg-gray-50 p-2 text-center">
               <p className="text-xs font-medium uppercase tracking-wide text-gray-400">Weight</p>
-              <p className="mt-1 text-lg font-bold text-gray-800">
+              <p className="text-base font-bold text-gray-800">
                 {(pokemon.weight / 10).toFixed(1)}kg
               </p>
             </div>
           </div>
 
           {/* Base Stats */}
-          <p className="mt-5 text-xs font-semibold uppercase tracking-wide text-gray-400">
+          <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-gray-400">
             Base Stats
           </p>
-          <div className="mt-2 space-y-2.5">
+          <div className="mt-1.5 space-y-1.5">
             {pokemon.stats.map((s) => (
               <div key={s.stat.name} className="flex items-center gap-3">
                 <span className="w-28 text-xs font-medium capitalize text-gray-500">
