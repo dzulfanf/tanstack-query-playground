@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { fetchPokemonList, fetchPokemon } from '@/shared/services/pokemon-api'
+import { fetchPokemonList, fetchPokemon, searchPokemon } from '@/shared/services/pokemon-api'
 
 const mockListResponse = {
   count: 1302,
@@ -97,5 +97,65 @@ describe('fetchPokemon', () => {
     } as Response)
 
     await expect(fetchPokemon('notapokemon')).rejects.toThrow('Failed to fetch pokemon notapokemon: 404')
+  })
+})
+
+describe('searchPokemon', () => {
+  it('returns empty array without fetching when term is empty', async () => {
+    const result = await searchPokemon('')
+    expect(result).toEqual([])
+    expect(fetch).not.toHaveBeenCalled()
+  })
+
+  it('returns empty array without fetching when term is whitespace', async () => {
+    const result = await searchPokemon('   ')
+    expect(result).toEqual([])
+    expect(fetch).not.toHaveBeenCalled()
+  })
+
+  it('fetches all names, filters by term, and returns first 4 details', async () => {
+    const allNames = [
+      { name: 'charmander', url: '' },
+      { name: 'charmeleon', url: '' },
+      { name: 'charizard', url: '' },
+      { name: 'charjabug', url: '' },
+      { name: 'pikachu', url: '' }, // does not contain 'char' — filtered out
+    ]
+    vi.mocked(fetch)
+      .mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({ count: 5, next: null, previous: null, results: allNames }),
+      } as Response)
+      .mockResolvedValue({
+        ok: true,
+        json: async () => mockPokemonDetail,
+      } as Response)
+
+    const result = await searchPokemon('char')
+
+    expect(vi.mocked(fetch).mock.calls[0][0]).toBe(
+      'https://pokeapi.co/api/v2/pokemon?limit=1302&offset=0',
+    )
+    expect(result).toHaveLength(4) // pikachu filtered out
+  })
+
+  it('limits results to 4 even when more than 4 names match', async () => {
+    const manyMatches = Array.from({ length: 10 }, (_, i) => ({ name: `char${i}`, url: '' }))
+    vi.mocked(fetch)
+      .mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({ count: 10, next: null, previous: null, results: manyMatches }),
+      } as Response)
+      .mockResolvedValue({ ok: true, json: async () => mockPokemonDetail } as Response)
+
+    const result = await searchPokemon('char')
+
+    expect(result).toHaveLength(4)
+    expect(vi.mocked(fetch)).toHaveBeenCalledTimes(5) // 1 list + 4 details
+  })
+
+  it('throws on non-ok list response', async () => {
+    vi.mocked(fetch).mockResolvedValueOnce({ ok: false, status: 503 } as Response)
+    await expect(searchPokemon('char')).rejects.toThrow('Failed to search pokemon: 503')
   })
 })

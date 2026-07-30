@@ -16,3 +16,14 @@ export async function fetchPokemon(idOrName: string | number): Promise<PokemonDe
   if (!res.ok) throw new Error(`Failed to fetch pokemon ${idOrName}: ${res.status}`)
   return res.json()
 }
+
+export async function searchPokemon(term: string): Promise<PokemonDetail[]> {
+  if (!term.trim()) return []
+  const res = await fetch(`${BASE_URL}/pokemon?limit=1302&offset=0`)
+  if (!res.ok) throw new Error(`Failed to search pokemon: ${res.status}`)
+  const list: PokemonListResponse = await res.json()
+  const matches = list.results
+    .filter((p) => p.name.includes(term.toLowerCase().trim()))
+    .slice(0, 4)
+  return Promise.all(matches.map((p) => fetchPokemon(p.name)))
+}
