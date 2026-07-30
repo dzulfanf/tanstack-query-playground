@@ -50,7 +50,7 @@ export function Module03Page() {
           </div>
         )}
         <Tabs defaultValue="inspector">
-          <TabsList className="w-full grid grid-cols-5 mb-4">
+          <TabsList className="w-full grid grid-cols-3 mb-4 sm:grid-cols-5">
             <TabsTrigger value="inspector" className="text-xs">
               <span className="sm:hidden">Insp</span>
               <span className="hidden sm:inline">Inspector</span>
