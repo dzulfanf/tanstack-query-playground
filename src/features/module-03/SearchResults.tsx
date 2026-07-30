@@ -28,7 +28,7 @@ export function SearchResults({ search, onSelect }: Props) {
     )
   }
 
-  if (isPending || isFetching) {
+  if (isPending || (isFetching && !data)) {
     return (
       <div className="grid grid-cols-4 gap-3">
         {Array.from({ length: 4 }).map((_, i) => (
