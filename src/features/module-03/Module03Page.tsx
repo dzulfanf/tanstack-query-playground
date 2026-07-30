@@ -14,7 +14,7 @@ export function Module03Page() {
   const [selected, setSelected] = useState<PokemonDetail | null>(null)
 
   return (
-    <div className="flex gap-6">
+    <div className="flex flex-col gap-6 lg:flex-row">
       <div className="flex-1 min-w-0">
         <div className="mb-4">
           <h1 className="text-2xl font-bold text-gray-900">Module 03 — Query Keys</h1>
@@ -33,7 +33,7 @@ export function Module03Page() {
         <ModuleSummary03 />
       </div>
 
-      <aside className="w-80 shrink-0">
+      <aside className="w-full lg:w-80 lg:shrink-0">
         {selected && (
           <div className="mb-4 rounded-2xl border border-gray-100 bg-white p-4 shadow-sm text-center">
             <img
@@ -51,10 +51,22 @@ export function Module03Page() {
         )}
         <Tabs defaultValue="inspector">
           <TabsList className="w-full grid grid-cols-5 mb-4">
-            <TabsTrigger value="inspector" className="text-xs">Inspector</TabsTrigger>
-            <TabsTrigger value="activity" className="text-xs">Activity</TabsTrigger>
-            <TabsTrigger value="insight" className="text-xs">Insight</TabsTrigger>
-            <TabsTrigger value="diagram" className="text-xs">Diagram</TabsTrigger>
+            <TabsTrigger value="inspector" className="text-xs">
+              <span className="sm:hidden">Insp</span>
+              <span className="hidden sm:inline">Inspector</span>
+            </TabsTrigger>
+            <TabsTrigger value="activity" className="text-xs">
+              <span className="sm:hidden">Act</span>
+              <span className="hidden sm:inline">Activity</span>
+            </TabsTrigger>
+            <TabsTrigger value="insight" className="text-xs">
+              <span className="sm:hidden">Ins</span>
+              <span className="hidden sm:inline">Insight</span>
+            </TabsTrigger>
+            <TabsTrigger value="diagram" className="text-xs">
+              <span className="sm:hidden">Diag</span>
+              <span className="hidden sm:inline">Diagram</span>
+            </TabsTrigger>
             <TabsTrigger value="code" className="text-xs">Code</TabsTrigger>
           </TabsList>
           <TabsContent value="inspector"><QueryInspector /></TabsContent>

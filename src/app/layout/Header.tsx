@@ -12,10 +12,11 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-gray-100 bg-white shadow-sm">
-      <div className="mx-auto flex max-w-7xl items-center gap-6 px-6 py-3">
+      <div className="mx-auto flex max-w-7xl items-center gap-2 px-4 py-3 sm:gap-6 sm:px-6">
         <div className="flex items-center gap-2">
           <span className="text-2xl">⚡</span>
-          <span className="text-lg font-bold text-blue-500">TanStack Query Playground</span>
+          <span className="hidden sm:inline text-lg font-bold text-blue-500">TanStack Query Playground</span>
+          <span className="sm:hidden text-sm font-bold text-blue-500">TQ Playground</span>
         </div>
 
         <nav className="flex gap-1">
@@ -23,23 +24,25 @@ export function Header() {
             <Link
               key={mod.id}
               to={mod.path}
-              className="rounded-full px-4 py-1.5 text-sm font-medium text-gray-600 transition hover:bg-blue-50 hover:text-blue-600 [&.active]:bg-blue-500 [&.active]:text-white"
+              className="rounded-full px-3 py-1.5 text-sm font-medium text-gray-600 transition hover:bg-blue-50 hover:text-blue-600 sm:px-4 [&.active]:bg-blue-500 [&.active]:text-white"
             >
-              {mod.label}
+              <span className="sm:hidden">{mod.id}</span>
+              <span className="hidden sm:inline">{mod.label}</span>
             </Link>
           ))}
         </nav>
 
         <button
           onClick={toggle}
-          className={`ml-auto flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-medium transition ${
+          className={`ml-auto flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-medium transition sm:px-4 ${
             enabled
               ? 'bg-yellow-400 text-yellow-900 shadow-sm'
               : 'bg-gray-100 text-gray-600 hover:bg-yellow-50 hover:text-yellow-700'
           }`}
         >
           <span>{enabled ? '🎓' : '💡'}</span>
-          {enabled ? 'Learning: ON' : 'Learning: OFF'}
+          <span className="hidden sm:inline">{enabled ? 'Learning: ON' : 'Learning: OFF'}</span>
+          <span className="sm:hidden">{enabled ? 'ON' : 'OFF'}</span>
         </button>
       </div>
     </header>
