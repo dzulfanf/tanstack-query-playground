@@ -34,9 +34,9 @@ export function PokemonBottomSheet({ pokemon, onClose }: Props) {
       <div className="relative w-full rounded-t-2xl bg-white shadow-xl animate-slide-up max-h-[85vh] overflow-y-auto">
 
         {/* Sticky header */}
-        <div className="sticky top-0 z-10 flex items-center justify-between rounded-t-2xl bg-white px-6 pt-5 pb-3 border-b border-gray-100">
-          <div>
-            <p className="text-xl font-bold capitalize text-gray-900">{pokemon.name}</p>
+        <div className="sticky top-0 z-10 flex items-center justify-between rounded-t-2xl bg-white px-5 py-3 border-b border-gray-100">
+          <div className="flex items-baseline gap-2">
+            <p className="text-base font-bold capitalize text-gray-900">{pokemon.name}</p>
             <p className="text-sm text-gray-400">#{String(pokemon.id).padStart(3, '0')}</p>
           </div>
           <button
