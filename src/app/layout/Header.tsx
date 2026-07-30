@@ -14,7 +14,7 @@ export function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
-    <header className="relative sticky top-0 z-50 border-b border-gray-100 bg-white shadow-sm">
+    <header className="relative sticky top-0 z-50 glass-header">
       <div className="mx-auto flex max-w-7xl items-center gap-2 px-4 py-3 sm:gap-6 sm:px-6">
         <div className="flex items-center gap-2">
           <span className="text-2xl">⚡</span>
@@ -27,7 +27,7 @@ export function Header() {
             <Link
               key={mod.id}
               to={mod.path}
-              className="rounded-full px-4 py-1.5 text-sm font-medium text-gray-600 transition hover:bg-blue-50 hover:text-blue-600 [&.active]:bg-blue-500 [&.active]:text-white"
+              className="rounded-full px-4 py-1.5 text-sm font-medium text-gray-700 transition hover:bg-white/30 hover:text-blue-700 [&.active]:bg-white/40 [&.active]:text-blue-700 [&.active]:font-semibold"
             >
               {mod.label}
             </Link>
@@ -49,7 +49,7 @@ export function Header() {
 
         <button
           onClick={() => setMenuOpen((o) => !o)}
-          className="sm:hidden rounded-full p-1.5 text-gray-600 hover:bg-gray-100 transition"
+          className="sm:hidden rounded-full p-1.5 text-gray-700 hover:bg-white/30 transition"
           aria-label="Toggle menu"
         >
           {menuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -57,7 +57,7 @@ export function Header() {
       </div>
 
       {menuOpen && (
-        <div className="sm:hidden absolute top-full left-0 right-0 border-t border-gray-100 bg-white shadow-md px-4 py-2">
+        <div className="sm:hidden absolute top-full left-0 right-0 glass-panel rounded-none border-t border-white/25 px-4 py-2">
           {MODULES.map((mod) => (
             <Link
               key={mod.id}
