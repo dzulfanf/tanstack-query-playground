@@ -91,6 +91,22 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+@utility glass-header {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.04);
+}
+
+@utility glass-panel {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
 .dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
@@ -130,7 +146,15 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
+    background: linear-gradient(
+      to bottom,
+      #87CEEB 0%,
+      #B8E0D4 45%,
+      #4CAF50 100%
+    );
+    background-attachment: fixed;
+    min-height: 100vh;
   }
   html {
     @apply font-sans;
