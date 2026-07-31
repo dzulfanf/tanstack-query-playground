@@ -70,7 +70,7 @@ export function PokemonRefetchGrid({ onSelect }: Props) {
         </div>
       )}
 
-      {listQuery.isPending || detailQueries.isPending ? (
+      {listQuery.isFetching || detailQueries.isPending ? (
         <LoadingSkeleton />
       ) : listQuery.isError ? (
         <ErrorState
