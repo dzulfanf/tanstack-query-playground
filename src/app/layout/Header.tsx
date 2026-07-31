@@ -17,7 +17,7 @@ export function Header() {
     <header className="relative sticky top-0 z-50 glass-header">
       <div className="mx-auto flex max-w-7xl items-center gap-2 px-4 py-3 sm:gap-6 sm:px-6">
         <div className="flex items-center">
-          <span className="text-lg font-extrabold text-blue-500">TanStack Query Playground</span>
+          <span className="text-lg font-extrabold text-blue-500">TanStack Query <span className="text-sm font-medium text-gray-400">Playground</span></span>
         </div>
 
         <nav className="hidden sm:flex gap-1">
