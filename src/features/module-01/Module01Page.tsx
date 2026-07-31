@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { PokemonGrid } from '@/features/pokemon/PokemonGrid'
 import { PokemonBottomSheet } from '@/features/pokemon/PokemonBottomSheet'
-import { PokemonDetailCard } from '@/features/pokemon/PokemonDetailCard'
+import { PokemonDetailTabs } from '@/features/pokemon/PokemonDetailTabs'
 import { QueryInspector } from '@/features/inspector/QueryInspector'
 import { QueryActivity } from '@/features/activity/QueryActivity'
 import { EngineeringInsight } from '@/features/module-01/panels/EngineeringInsight'
@@ -39,8 +39,8 @@ export function Module01Page() {
 
       <aside className="w-full lg:w-80 lg:shrink-0">
         {selected && (
-          <div className="hidden lg:block mb-4 rounded-2xl glass-panel overflow-y-auto max-h-72">
-            <PokemonDetailCard pokemon={selected} size="compact" />
+          <div className="hidden lg:block mb-4 rounded-2xl glass-panel">
+            <PokemonDetailTabs pokemon={selected} size="compact" />
           </div>
         )}
         <LearningTabs tabs={TABS} defaultValue="inspector" />
