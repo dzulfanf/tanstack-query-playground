@@ -27,8 +27,8 @@ const SECTIONS = [
 
 export function EngineeringInsight03() {
   return (
-    <div className="rounded-2xl border border-gray-100 bg-white shadow-sm">
-      <div className="border-b border-gray-100 px-4 py-3">
+    <div className="rounded-2xl glass-panel">
+      <div className="border-b border-white/25 px-4 py-3">
         <h3 className="text-sm font-bold text-gray-900">🧩 Engineering Insight</h3>
       </div>
       <div className="divide-y divide-gray-50 px-4">

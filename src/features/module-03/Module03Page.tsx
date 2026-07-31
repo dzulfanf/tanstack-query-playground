@@ -28,7 +28,7 @@ export function Module03Page() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Try 'char', then 'bulb', then 'char' again"
-          className="mb-4 w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-base sm:text-sm shadow-sm outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
+          className="mb-4 w-full rounded-2xl glass-panel px-4 py-3 text-base sm:text-sm outline-none focus:border-blue-300/60 focus:ring-2 focus:ring-blue-100/40"
         />
         <SearchResults search={search} onSelect={setSelected} />
         <ModuleSummary03 />
@@ -38,7 +38,7 @@ export function Module03Page() {
 
       <aside className="w-full lg:w-80 lg:shrink-0">
         {selected && (
-          <div className="hidden lg:block mb-4 rounded-2xl border border-gray-100 bg-white p-4 shadow-sm text-center">
+          <div className="hidden lg:block mb-4 rounded-2xl glass-panel p-4 text-center">
             <img
               src={
                 selected.sprites.other['official-artwork'].front_default ??

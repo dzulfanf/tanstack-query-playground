@@ -20,16 +20,16 @@ const TAKEAWAYS = [
 
 export function ModuleSummary03() {
   return (
-    <div className="mt-8 rounded-2xl border border-purple-100 bg-purple-50 p-6">
+    <div className="mt-8 rounded-2xl border border-purple-200/40 bg-purple-100/30 backdrop-blur-[12px] p-6">
       <h2 className="mb-4 text-lg font-bold text-purple-900">✅ Module 03 Summary</h2>
       <div className="mb-4 grid gap-2 sm:grid-cols-2">
-        <div className="rounded-xl bg-white p-4 shadow-sm">
+        <div className="rounded-xl bg-white/40 p-4">
           <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-gray-500">Problem</p>
           <p className="text-sm text-gray-700">
             Search results change with every term. Caching every possible search manually is complex and error-prone.
           </p>
         </div>
-        <div className="rounded-xl bg-white p-4 shadow-sm">
+        <div className="rounded-xl bg-white/40 p-4">
           <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-gray-500">Solution</p>
           <p className="text-sm text-gray-700">
             A dynamic queryKey includes the term. Each unique term becomes a separate cache entry automatically, for free.
