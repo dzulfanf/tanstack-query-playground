@@ -11,7 +11,7 @@ import { EngineeringInsight02 } from '@/features/module-02/panels/EngineeringIns
 import { VisualDiagram02 } from '@/features/module-02/panels/VisualDiagram02'
 import { SourceCodePanel02 } from '@/features/module-02/panels/SourceCodePanel02'
 import type { PokemonDetail } from '@/shared/types/pokemon'
-import { PokemonDetailCard } from '@/features/pokemon/PokemonDetailCard'
+import { PokemonDetailTabs } from '@/features/pokemon/PokemonDetailTabs'
 
 export function PokemonDetailPage() {
   const { name } = useParams({ from: '/module/02/pokemon/$name' })
@@ -62,7 +62,7 @@ export function PokemonDetailPage() {
 
         {data && (
           <div className="rounded-2xl glass-panel">
-            <PokemonDetailCard pokemon={data} size="full" />
+            <PokemonDetailTabs pokemon={data} size="full" />
           </div>
         )}
 
