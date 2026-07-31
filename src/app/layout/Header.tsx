@@ -16,10 +16,8 @@ export function Header() {
   return (
     <header className="relative sticky top-0 z-50 glass-header">
       <div className="mx-auto flex max-w-7xl items-center gap-2 px-4 py-3 sm:gap-6 sm:px-6">
-        <div className="flex items-center gap-2">
-          <span className="text-2xl">⚡</span>
-          <span className="hidden sm:inline text-lg font-bold text-blue-500">TanStack Query Playground</span>
-          <span className="sm:hidden text-sm font-bold text-blue-500">TQ Playground</span>
+        <div className="flex items-center">
+          <span className="text-lg font-extrabold text-blue-500">TanStack Query Playground</span>
         </div>
 
         <nav className="hidden sm:flex gap-1">
