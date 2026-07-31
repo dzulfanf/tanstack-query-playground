@@ -15,8 +15,10 @@ const EVENT_STYLES: Record<string, { icon: string; color: string }> = {
   added: { icon: '➕', color: 'text-green-600' },
   removed: { icon: '🗑️', color: 'text-red-500' },
   updated: { icon: '🔄', color: 'text-blue-600' },
-  observed: { icon: '👁️', color: 'text-purple-600' },
-  unobserved: { icon: '👁️‍🗨️', color: 'text-gray-400' },
+  observerAdded: { icon: '👁️', color: 'text-purple-600' },
+  observerRemoved: { icon: '👁️‍🗨️', color: 'text-gray-400' },
+  observerResultsUpdated: { icon: '📊', color: 'text-blue-400' },
+  observerOptionsUpdated: { icon: '⚙️', color: 'text-gray-500' },
 }
 
 export function QueryActivity() {

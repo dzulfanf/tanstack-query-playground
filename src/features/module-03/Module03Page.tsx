@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { SearchResults } from '@/features/module-03/SearchResults'
 import { PokemonBottomSheet } from '@/features/pokemon/PokemonBottomSheet'
 import { ModuleSummary03 } from '@/features/module-03/panels/ModuleSummary03'
@@ -8,7 +7,16 @@ import { VisualDiagram03 } from '@/features/module-03/panels/VisualDiagram03'
 import { SourceCodePanel03 } from '@/features/module-03/panels/SourceCodePanel03'
 import { QueryInspector } from '@/features/inspector/QueryInspector'
 import { QueryActivity } from '@/features/activity/QueryActivity'
+import { LearningTabs } from '@/shared/components/LearningTabs'
 import type { PokemonDetail } from '@/shared/types/pokemon'
+
+const TABS = [
+  { value: 'inspector', label: 'Insp', content: <QueryInspector /> },
+  { value: 'activity', label: 'Act', content: <QueryActivity /> },
+  { value: 'insight', label: 'Insight', content: <EngineeringInsight03 /> },
+  { value: 'diagram', label: 'Diag', content: <VisualDiagram03 /> },
+  { value: 'code', label: 'Code', content: <SourceCodePanel03 /> },
+]
 
 export function Module03Page() {
   const [search, setSearch] = useState('')
@@ -52,20 +60,7 @@ export function Module03Page() {
             <p className="text-sm text-gray-400">#{String(selected.id).padStart(3, '0')}</p>
           </div>
         )}
-        <Tabs defaultValue="inspector">
-          <TabsList className="w-full grid grid-cols-5 mb-4">
-            <TabsTrigger value="inspector" className="text-xs">Insp</TabsTrigger>
-            <TabsTrigger value="activity" className="text-xs">Act</TabsTrigger>
-            <TabsTrigger value="insight" className="text-xs">Insight</TabsTrigger>
-            <TabsTrigger value="diagram" className="text-xs">Diag</TabsTrigger>
-            <TabsTrigger value="code" className="text-xs">Code</TabsTrigger>
-          </TabsList>
-          <TabsContent value="inspector"><QueryInspector /></TabsContent>
-          <TabsContent value="activity"><QueryActivity /></TabsContent>
-          <TabsContent value="insight"><EngineeringInsight03 /></TabsContent>
-          <TabsContent value="diagram"><VisualDiagram03 /></TabsContent>
-          <TabsContent value="code"><SourceCodePanel03 /></TabsContent>
-        </Tabs>
+        <LearningTabs tabs={TABS} defaultValue="inspector" />
       </aside>
     </div>
   )
