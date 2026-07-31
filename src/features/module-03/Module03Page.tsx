@@ -53,23 +53,11 @@ export function Module03Page() {
           </div>
         )}
         <Tabs defaultValue="inspector">
-          <TabsList className="w-full grid grid-cols-3 mb-4 sm:grid-cols-5 !h-auto">
-            <TabsTrigger value="inspector" className="text-xs">
-              <span className="sm:hidden">Insp</span>
-              <span className="hidden sm:inline">Inspector</span>
-            </TabsTrigger>
-            <TabsTrigger value="activity" className="text-xs">
-              <span className="sm:hidden">Act</span>
-              <span className="hidden sm:inline">Activity</span>
-            </TabsTrigger>
-            <TabsTrigger value="insight" className="text-xs">
-              <span className="sm:hidden">Ins</span>
-              <span className="hidden sm:inline">Insight</span>
-            </TabsTrigger>
-            <TabsTrigger value="diagram" className="text-xs">
-              <span className="sm:hidden">Diag</span>
-              <span className="hidden sm:inline">Diagram</span>
-            </TabsTrigger>
+          <TabsList className="w-full grid grid-cols-5 mb-4">
+            <TabsTrigger value="inspector" className="text-xs">Insp</TabsTrigger>
+            <TabsTrigger value="activity" className="text-xs">Act</TabsTrigger>
+            <TabsTrigger value="insight" className="text-xs">Insight</TabsTrigger>
+            <TabsTrigger value="diagram" className="text-xs">Diag</TabsTrigger>
             <TabsTrigger value="code" className="text-xs">Code</TabsTrigger>
           </TabsList>
           <TabsContent value="inspector"><QueryInspector /></TabsContent>
