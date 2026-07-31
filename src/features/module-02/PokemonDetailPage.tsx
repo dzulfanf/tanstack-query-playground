@@ -11,27 +11,7 @@ import { EngineeringInsight02 } from '@/features/module-02/panels/EngineeringIns
 import { VisualDiagram02 } from '@/features/module-02/panels/VisualDiagram02'
 import { SourceCodePanel02 } from '@/features/module-02/panels/SourceCodePanel02'
 import type { PokemonDetail } from '@/shared/types/pokemon'
-
-const TYPE_COLORS: Record<string, string> = {
-  fire: 'bg-orange-100 text-orange-700',
-  water: 'bg-blue-100 text-blue-700',
-  grass: 'bg-green-100 text-green-700',
-  electric: 'bg-yellow-100 text-yellow-700',
-  psychic: 'bg-pink-100 text-pink-700',
-  ice: 'bg-cyan-100 text-cyan-700',
-  dragon: 'bg-indigo-100 text-indigo-700',
-  dark: 'bg-gray-100 text-gray-700',
-  fairy: 'bg-rose-100 text-rose-700',
-  normal: 'bg-gray-100 text-gray-600',
-  fighting: 'bg-red-100 text-red-700',
-  flying: 'bg-sky-100 text-sky-700',
-  poison: 'bg-purple-100 text-purple-700',
-  ground: 'bg-amber-100 text-amber-700',
-  rock: 'bg-stone-100 text-stone-700',
-  bug: 'bg-lime-100 text-lime-700',
-  ghost: 'bg-violet-100 text-violet-700',
-  steel: 'bg-slate-100 text-slate-700',
-}
+import { PokemonDetailCard } from '@/features/pokemon/PokemonDetailCard'
 
 export function PokemonDetailPage() {
   const { name } = useParams({ from: '/module/02/pokemon/$name' })
@@ -81,44 +61,8 @@ export function PokemonDetailPage() {
         )}
 
         {data && (
-          <div className="rounded-2xl glass-panel p-6 sm:p-8">
-            <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-8">
-              <img
-                src={
-                  data.sprites.other['official-artwork'].front_default ??
-                  data.sprites.front_default ??
-                  ''
-                }
-                alt={data.name}
-                className="h-40 w-40 object-contain"
-              />
-              <div className="text-center sm:text-left">
-                <p className="text-3xl font-bold capitalize text-gray-900">{data.name}</p>
-                <p className="text-gray-400">#{String(data.id).padStart(3, '0')}</p>
-                <div className="mt-3 flex justify-center gap-2 sm:justify-start">
-                  {data.types.map((t) => (
-                    <span
-                      key={t.type.name}
-                      className={`rounded-full px-3 py-1 text-sm font-medium capitalize ${
-                        TYPE_COLORS[t.type.name] ?? 'bg-gray-100 text-gray-600'
-                      }`}
-                    >
-                      {t.type.name}
-                    </span>
-                  ))}
-                </div>
-                <div className="mt-4 grid grid-cols-2 gap-3">
-                  {data.stats.slice(0, 4).map((s) => (
-                    <div key={s.stat.name}>
-                      <p className="text-xs font-medium uppercase tracking-wide text-gray-400 capitalize">
-                        {s.stat.name.replace('-', ' ')}
-                      </p>
-                      <p className="text-lg font-bold text-gray-800">{s.base_stat}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
+          <div className="rounded-2xl glass-panel">
+            <PokemonDetailCard pokemon={data} size="full" />
           </div>
         )}
 
