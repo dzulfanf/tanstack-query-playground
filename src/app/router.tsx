@@ -5,6 +5,7 @@ import { Module02Page } from '@/features/module-02/Module02Page'
 import { PokemonDetailPage } from '@/features/module-02/PokemonDetailPage'
 import { Module03Page } from '@/features/module-03/Module03Page'
 import { Module04Page } from '@/features/module-04/Module04Page'
+import { Module05Page } from '@/features/module-05/Module05Page'
 
 const rootRoute = createRootRoute({ component: RootLayout })
 
@@ -44,6 +45,12 @@ export const module04Route = createRoute({
   component: Module04Page,
 })
 
+export const module05Route = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/module/05',
+  component: Module05Page,
+})
+
 const routeTree = rootRoute.addChildren([
   indexRoute,
   module01Route,
@@ -51,6 +58,7 @@ const routeTree = rootRoute.addChildren([
   module02DetailRoute,
   module03Route,
   module04Route,
+  module05Route,
 ])
 
 export const router = createRouter({ routeTree })

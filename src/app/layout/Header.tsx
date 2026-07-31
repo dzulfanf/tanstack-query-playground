@@ -8,6 +8,7 @@ const MODULES = [
   { id: '02', label: 'Query Cache', path: '/module/02' },
   { id: '03', label: 'Query Keys', path: '/module/03' },
   { id: '04', label: 'Background Fetching', path: '/module/04' },
+  { id: '05', label: 'Infinite Query', path: '/module/05' },
 ]
 
 export function Header() {
