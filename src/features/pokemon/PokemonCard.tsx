@@ -23,7 +23,7 @@ const TYPE_COLORS: Record<string, string> = {
 
 interface Props {
   pokemon: PokemonDetail
-  onClick: (pokemon: PokemonDetail) => void
+  onClick?: (pokemon: PokemonDetail) => void
 }
 
 export function PokemonCard({ pokemon, onClick }: Props) {
@@ -33,8 +33,8 @@ export function PokemonCard({ pokemon, onClick }: Props) {
 
   return (
     <div
-      onClick={() => onClick(pokemon)}
-      className="group cursor-pointer rounded-2xl glass-panel p-3 transition hover:bg-white/60 hover:shadow-lg"
+      onClick={onClick ? () => onClick(pokemon) : undefined}
+      className={`group rounded-2xl glass-panel p-3 transition${onClick ? ' cursor-pointer hover:bg-white/60 hover:shadow-lg' : ''}`}
     >
       <div className="flex h-20 items-center justify-center rounded-xl bg-white/30">
         {sprite ? (

@@ -23,7 +23,7 @@ const SECTIONS: InsightSection[] = [
   {
     emoji: '✅',
     label: 'TanStack Query Solution',
-    content: 'Check isFetching && !isPending to detect a background refresh. Show a subtle indicator — never replace existing data with a loading skeleton.',
+    content: 'Check isFetching && !isPending to detect a background refresh. Show a subtle indicator — never replace existing data with a loading skeleton. Note: manual refetch() always fires regardless of staleTime — staleTime only prevents automatic background refetches.',
   },
 ]
 

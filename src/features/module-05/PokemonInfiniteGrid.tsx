@@ -38,7 +38,7 @@ export function PokemonInfiniteGrid() {
     <div className="space-y-6">
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
         {pokemon.map((p) => (
-          <PokemonCard key={p.id} pokemon={p} onClick={() => {}} />
+          <PokemonCard key={p.id} pokemon={p} />
         ))}
       </div>
 
