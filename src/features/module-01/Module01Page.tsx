@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { PokemonGrid } from '@/features/pokemon/PokemonGrid'
 import { PokemonBottomSheet } from '@/features/pokemon/PokemonBottomSheet'
+import { PokemonDetailCard } from '@/features/pokemon/PokemonDetailCard'
 import { QueryInspector } from '@/features/inspector/QueryInspector'
 import { QueryActivity } from '@/features/activity/QueryActivity'
 import { EngineeringInsight } from '@/features/module-01/panels/EngineeringInsight'
@@ -38,19 +39,8 @@ export function Module01Page() {
 
       <aside className="w-full lg:w-80 lg:shrink-0">
         {selected && (
-          <div className="hidden lg:block mb-4 rounded-2xl glass-panel p-4 text-center">
-            <img
-              src={
-                selected.sprites.other['official-artwork'].front_default ??
-                selected.sprites.front_default ??
-                ''
-              }
-              alt={selected.name}
-              loading="eager"
-              className="mx-auto h-28 w-28"
-            />
-            <p className="mt-2 text-lg font-bold capitalize text-gray-900">{selected.name}</p>
-            <p className="text-sm text-gray-400">#{String(selected.id).padStart(3, '0')}</p>
+          <div className="hidden lg:block mb-4 rounded-2xl glass-panel overflow-y-auto max-h-72">
+            <PokemonDetailCard pokemon={selected} size="compact" />
           </div>
         )}
         <LearningTabs tabs={TABS} defaultValue="inspector" />
