@@ -48,8 +48,8 @@ export function QueryActivity() {
   }, [events])
 
   return (
-    <div className="rounded-2xl border border-gray-100 bg-white shadow-sm">
-      <div className="flex items-center justify-between border-b border-gray-100 px-4 py-3">
+    <div className="rounded-2xl glass-panel">
+      <div className="flex items-center justify-between border-b border-white/25 px-4 py-3">
         <h3 className="text-sm font-bold text-gray-900">📊 Query Activity</h3>
         <button
           onClick={() => setEvents([])}

@@ -20,14 +20,14 @@ const CODE = `function SearchResults({ search }) {
 
 export function SourceCodePanel03() {
   return (
-    <div className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm">
-      <div className="border-b border-gray-100 px-4 py-3">
+    <div className="overflow-hidden rounded-2xl glass-panel">
+      <div className="border-b border-white/25 px-4 py-3">
         <h3 className="text-sm font-bold text-gray-900">💻 Source Code</h3>
       </div>
       <SyntaxHighlighter
         language="tsx"
         style={oneLight}
-        customStyle={{ margin: 0, borderRadius: 0, fontSize: '12px', background: '#fafafa' }}
+        customStyle={{ margin: 0, borderRadius: 0, fontSize: '12px', background: 'rgba(255,255,255,0.3)' }}
         wrapLines
       >
         {CODE}

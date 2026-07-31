@@ -60,9 +60,9 @@ export function PokemonCacheGrid() {
           key={p.name}
           to="/module/02/pokemon/$name"
           params={{ name: p.name }}
-          className="group block rounded-2xl border border-gray-100 bg-white p-3 shadow-sm transition hover:border-blue-200 hover:shadow-md"
+          className="group block rounded-2xl glass-panel p-3 transition hover:bg-white/60 hover:shadow-lg"
         >
-          <div className="flex h-20 items-center justify-center rounded-xl bg-gray-50">
+          <div className="flex h-20 items-center justify-center rounded-xl bg-white/30">
             <img
               src={
                 p.sprites.other['official-artwork'].front_default ??

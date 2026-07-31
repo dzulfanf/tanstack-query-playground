@@ -34,9 +34,9 @@ export function PokemonCard({ pokemon, onClick }: Props) {
   return (
     <div
       onClick={() => onClick(pokemon)}
-      className="group cursor-pointer rounded-2xl border border-gray-100 bg-white p-3 shadow-sm transition hover:border-blue-200 hover:shadow-md"
+      className="group cursor-pointer rounded-2xl glass-panel p-3 transition hover:bg-white/60 hover:shadow-lg"
     >
-      <div className="flex h-20 items-center justify-center rounded-xl bg-gray-50">
+      <div className="flex h-20 items-center justify-center rounded-xl bg-white/30">
         {sprite ? (
           <img
             src={sprite}

@@ -25,7 +25,7 @@ interface FieldProps {
 
 function Field({ label, children }: FieldProps) {
   return (
-    <div className="flex items-center justify-between py-2 border-b border-gray-50 last:border-0">
+    <div className="flex items-center justify-between py-2 border-b border-white/20 last:border-0">
       <span className="text-xs font-medium text-gray-500">{label}</span>
       <span className="text-xs font-semibold text-gray-800">{children}</span>
     </div>
@@ -56,7 +56,7 @@ export function QueryInspector({ queryKey }: Props) {
 
   if (!queryState) {
     return (
-      <div className="rounded-xl bg-gray-50 p-4 text-center text-xs text-gray-400">
+      <div className="rounded-xl bg-white/30 p-4 text-center text-xs text-gray-500">
         No query to inspect yet
       </div>
     )
@@ -76,10 +76,10 @@ export function QueryInspector({ queryKey }: Props) {
     : '—'
 
   return (
-    <div className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm">
+    <div className="rounded-2xl glass-panel p-4">
       <h3 className="mb-3 text-sm font-bold text-gray-900">Query Inspector</h3>
 
-      <div className="mb-3 rounded-lg bg-gray-50 px-2 py-1">
+      <div className="mb-3 rounded-lg bg-white/30 px-2 py-1">
         <p className="truncate font-mono text-xs text-gray-500">
           {JSON.stringify(queryState.queryKey)}
         </p>

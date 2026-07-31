@@ -55,7 +55,7 @@ export function PokemonDetailPage() {
         <div className="mb-4 flex flex-wrap items-center gap-3">
           <Link
             to="/module/02"
-            className="rounded-full bg-gray-100 px-3 py-1.5 text-sm font-medium text-gray-600 hover:bg-gray-200"
+            className="rounded-full bg-white/30 px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-white/50"
           >
             ← Back to list
           </Link>
@@ -81,7 +81,7 @@ export function PokemonDetailPage() {
         )}
 
         {data && (
-          <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm sm:p-8">
+          <div className="rounded-2xl glass-panel p-6 sm:p-8">
             <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-8">
               <img
                 src={
@@ -122,7 +122,7 @@ export function PokemonDetailPage() {
           </div>
         )}
 
-        <div className="mt-4 rounded-2xl border border-amber-100 bg-amber-50 p-4">
+        <div className="mt-4 rounded-2xl border border-amber-200/40 bg-amber-100/30 backdrop-blur-[12px] p-4">
           <p className="text-sm font-semibold text-amber-800">Try the Cache Demo</p>
           <p className="mt-1 text-sm text-amber-700">
             Click <strong>← Back to list</strong> and click this Pokémon again. The badge will
@@ -133,7 +133,7 @@ export function PokemonDetailPage() {
 
       <aside className="w-full lg:w-80 lg:shrink-0">
         <Tabs defaultValue="inspector">
-          <TabsList className="w-full grid grid-cols-3 mb-4 sm:grid-cols-5">
+          <TabsList className="w-full grid grid-cols-3 mb-4 sm:grid-cols-5 !h-auto">
             <TabsTrigger value="inspector" className="text-xs">
               <span className="sm:hidden">Insp</span>
               <span className="hidden sm:inline">Inspector</span>

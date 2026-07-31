@@ -25,8 +25,8 @@ export function VisualDiagram03() {
   }, [queryClient])
 
   return (
-    <div className="rounded-2xl border border-gray-100 bg-white shadow-sm">
-      <div className="border-b border-gray-100 px-4 py-3">
+    <div className="rounded-2xl glass-panel">
+      <div className="border-b border-white/25 px-4 py-3">
         <h3 className="text-sm font-bold text-gray-900">🖼 Visual Diagram</h3>
         <p className="mt-0.5 text-xs text-gray-400">
           Each unique search term = a separate cache entry
@@ -51,7 +51,7 @@ export function VisualDiagram03() {
               return (
                 <div
                   key={term}
-                  className="flex items-center justify-between rounded-lg border border-gray-100 bg-gray-50 px-3 py-2"
+                  className="flex items-center justify-between rounded-lg border border-white/30 bg-white/30 px-3 py-2"
                 >
                   <div>
                     <code className="text-xs text-blue-600">"{term}"</code>
