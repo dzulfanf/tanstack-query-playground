@@ -42,7 +42,6 @@ export function Header() {
         >
           <span>{enabled ? '🎓' : '💡'}</span>
           <span className="hidden sm:inline">{enabled ? 'Learning: ON' : 'Learning: OFF'}</span>
-          <span className="sm:hidden">{enabled ? 'ON' : 'OFF'}</span>
         </button>
 
         <button
