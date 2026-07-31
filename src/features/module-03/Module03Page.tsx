@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { SearchResults } from '@/features/module-03/SearchResults'
 import { PokemonBottomSheet } from '@/features/pokemon/PokemonBottomSheet'
+import { PokemonDetailTabs } from '@/features/pokemon/PokemonDetailTabs'
 import { ModuleSummary03 } from '@/features/module-03/panels/ModuleSummary03'
 import { EngineeringInsight03 } from '@/features/module-03/panels/EngineeringInsight03'
 import { VisualDiagram03 } from '@/features/module-03/panels/VisualDiagram03'
@@ -46,18 +47,8 @@ export function Module03Page() {
 
       <aside className="w-full lg:w-80 lg:shrink-0">
         {selected && (
-          <div className="hidden lg:block mb-4 rounded-2xl glass-panel p-4 text-center">
-            <img
-              src={
-                selected.sprites.other['official-artwork'].front_default ??
-                selected.sprites.front_default ??
-                ''
-              }
-              alt={selected.name}
-              className="mx-auto h-28 w-28"
-            />
-            <p className="mt-2 text-lg font-bold capitalize text-gray-900">{selected.name}</p>
-            <p className="text-sm text-gray-400">#{String(selected.id).padStart(3, '0')}</p>
+          <div className="hidden lg:block mb-4 rounded-2xl glass-panel">
+            <PokemonDetailTabs pokemon={selected} size="compact" />
           </div>
         )}
         <LearningTabs tabs={TABS} defaultValue="inspector" />
