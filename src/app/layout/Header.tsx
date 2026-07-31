@@ -57,7 +57,7 @@ export function Header() {
       </div>
 
       {menuOpen && (
-        <div className="sm:hidden absolute top-full left-0 right-0 glass-panel rounded-none border-t border-white/25 px-4 py-2">
+        <div className="sm:hidden absolute top-full left-0 right-0 bg-white/80 backdrop-blur-[12px] border-t border-white/40 shadow-md px-4 py-2">
           {MODULES.map((mod) => (
             <Link
               key={mod.id}

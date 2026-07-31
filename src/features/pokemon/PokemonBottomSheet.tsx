@@ -31,10 +31,10 @@ export function PokemonBottomSheet({ pokemon, onClose }: Props) {
   return (
     <div className="lg:hidden fixed inset-0 z-40 flex items-end">
       <div className="absolute inset-0 bg-black/30" onClick={onClose} />
-      <div className="relative w-full rounded-t-2xl bg-white/50 backdrop-blur-[16px] border border-white/55 shadow-xl animate-slide-up max-h-[85vh] overflow-y-auto">
+      <div className="relative w-full rounded-t-2xl bg-white/75 backdrop-blur-[16px] border border-white/60 shadow-xl animate-slide-up max-h-[85vh] overflow-y-auto">
 
         {/* Sticky header */}
-        <div className="sticky top-0 z-10 flex items-center justify-between rounded-t-2xl bg-white/50 backdrop-blur-[16px] px-5 py-3 border-b border-white/25">
+        <div className="sticky top-0 z-10 flex items-center justify-between rounded-t-2xl bg-white/75 backdrop-blur-[16px] px-5 py-3 border-b border-white/30">
           <div className="flex items-baseline gap-2">
             <p className="text-base font-bold capitalize text-gray-900">{pokemon.name}</p>
             <p className="text-sm text-gray-400">#{String(pokemon.id).padStart(3, '0')}</p>
