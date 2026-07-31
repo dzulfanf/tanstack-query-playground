@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useQueryClient } from '@tanstack/react-query'
 import type { Query, QueryObserverOptions } from '@tanstack/react-query'
 import { useLearningMode } from '@/shared/hooks/use-learning-mode'
@@ -35,19 +35,50 @@ interface FieldProps {
   children: React.ReactNode
 }
 
+function TooltipIcon({ tip }: { tip: string }) {
+  const [open, setOpen] = useState(false)
+  const ref = useRef<HTMLSpanElement>(null)
+
+  useEffect(() => {
+    if (!open) return
+    const close = (e: MouseEvent | TouchEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false)
+    }
+    document.addEventListener('mousedown', close)
+    document.addEventListener('touchstart', close)
+    return () => {
+      document.removeEventListener('mousedown', close)
+      document.removeEventListener('touchstart', close)
+    }
+  }, [open])
+
+  return (
+    <span ref={ref} className="relative group">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        className="inline-flex items-center justify-center w-3.5 h-3.5 rounded-full bg-yellow-200 text-yellow-700 text-[9px] font-bold cursor-help leading-none"
+        aria-label="Tampilkan penjelasan"
+      >
+        ?
+      </button>
+      <span
+        className={`absolute left-1/2 -translate-x-1/2 bottom-full mb-1.5 w-52 rounded-lg bg-gray-900/90 text-white text-[11px] leading-snug p-2.5 pointer-events-none transition-opacity z-50 shadow-lg ${
+          open ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+        }`}
+      >
+        {tip}
+      </span>
+    </span>
+  )
+}
+
 function Field({ label, showTip, children }: FieldProps) {
   return (
     <div className="flex items-center justify-between py-2 border-b border-white/20 last:border-0">
       <div className="flex items-center gap-1">
         <span className="text-xs font-medium text-gray-500">{label}</span>
-        {showTip && FIELD_TIPS[label] && (
-          <span className="relative group">
-            <span className="inline-flex items-center justify-center w-3.5 h-3.5 rounded-full bg-yellow-200 text-yellow-700 text-[9px] font-bold cursor-help leading-none">?</span>
-            <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-1.5 w-52 rounded-lg bg-gray-900/90 text-white text-[11px] leading-snug p-2.5 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-50 shadow-lg">
-              {FIELD_TIPS[label]}
-            </span>
-          </span>
-        )}
+        {showTip && FIELD_TIPS[label] && <TooltipIcon tip={FIELD_TIPS[label]} />}
       </div>
       <span className="text-xs font-semibold text-gray-800">{children}</span>
     </div>
@@ -106,7 +137,7 @@ export function QueryInspector({ queryKey }: Props) {
         <h3 className="text-sm font-bold text-gray-900">Query Inspector</h3>
         {enabled && (
           <span className="text-[10px] font-medium px-1.5 py-0.5 rounded-full bg-yellow-100 text-yellow-700">
-            🎓 hover ? untuk penjelasan
+            🎓 ketuk ? untuk penjelasan
           </span>
         )}
       </div>
