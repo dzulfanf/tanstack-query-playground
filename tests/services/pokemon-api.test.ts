@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { fetchPokemonList, fetchPokemon, searchPokemon } from '@/shared/services/pokemon-api'
+import { fetchPokemonList, fetchPokemon, searchPokemon, fetchPokemonSpecies, fetchEvolutionChain } from '@/shared/services/pokemon-api'
 
 const mockListResponse = {
   count: 1302,
@@ -23,6 +23,29 @@ const mockPokemonDetail = {
   sprites: {
     front_default: 'https://example.com/pikachu.png',
     other: { 'official-artwork': { front_default: 'https://example.com/pikachu-art.png' } },
+  },
+}
+
+const mockSpeciesResponse = {
+  name: 'bulbasaur',
+  flavor_text_entries: [
+    { flavor_text: 'A strange seed was planted\non its back at birth.', language: { name: 'en' } },
+  ],
+  evolution_chain: { url: 'https://pokeapi.co/api/v2/evolution-chain/1/' },
+}
+
+const mockEvolutionChain = {
+  id: 1,
+  chain: {
+    species: { name: 'bulbasaur' },
+    evolves_to: [
+      {
+        species: { name: 'ivysaur' },
+        evolves_to: [
+          { species: { name: 'venusaur' }, evolves_to: [] },
+        ],
+      },
+    ],
   },
 }
 
@@ -157,5 +180,48 @@ describe('searchPokemon', () => {
   it('throws on non-ok list response', async () => {
     vi.mocked(fetch).mockResolvedValueOnce({ ok: false, status: 503 } as Response)
     await expect(searchPokemon('char')).rejects.toThrow('Failed to search pokemon: 503')
+  })
+})
+
+describe('fetchPokemonSpecies', () => {
+  it('fetches species by name and returns evolution_chain url', async () => {
+    vi.mocked(fetch).mockResolvedValueOnce({
+      ok: true,
+      json: async () => mockSpeciesResponse,
+    } as Response)
+
+    const result = await fetchPokemonSpecies('bulbasaur')
+
+    expect(fetch).toHaveBeenCalledWith('https://pokeapi.co/api/v2/pokemon-species/bulbasaur')
+    expect(result.evolution_chain.url).toBe('https://pokeapi.co/api/v2/evolution-chain/1/')
+  })
+
+  it('throws on non-ok response', async () => {
+    vi.mocked(fetch).mockResolvedValueOnce({ ok: false, status: 404 } as Response)
+    await expect(fetchPokemonSpecies('notaspecies')).rejects.toThrow(
+      'Failed to fetch species notaspecies: 404',
+    )
+  })
+})
+
+describe('fetchEvolutionChain', () => {
+  it('fetches chain by full URL', async () => {
+    vi.mocked(fetch).mockResolvedValueOnce({
+      ok: true,
+      json: async () => mockEvolutionChain,
+    } as Response)
+
+    const result = await fetchEvolutionChain('https://pokeapi.co/api/v2/evolution-chain/1/')
+
+    expect(fetch).toHaveBeenCalledWith('https://pokeapi.co/api/v2/evolution-chain/1/')
+    expect(result.chain.species.name).toBe('bulbasaur')
+    expect(result.chain.evolves_to[0].species.name).toBe('ivysaur')
+  })
+
+  it('throws on non-ok response', async () => {
+    vi.mocked(fetch).mockResolvedValueOnce({ ok: false, status: 500 } as Response)
+    await expect(
+      fetchEvolutionChain('https://pokeapi.co/api/v2/evolution-chain/1/'),
+    ).rejects.toThrow('Failed to fetch evolution chain: 500')
   })
 })
