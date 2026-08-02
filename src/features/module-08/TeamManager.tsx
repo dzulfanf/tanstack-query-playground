@@ -3,7 +3,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { fetchPokemonList, fetchPokemon } from '@/shared/services/pokemon-api'
 import { PokemonCard } from '@/features/pokemon/PokemonCard'
 import { LoadingSkeleton } from '@/features/pokemon/LoadingSkeleton'
-import { getTeam, isOnTeam, addToTeam, removeFromTeam, delay } from './useFakeTeamServer'
+import { getTeam, addToTeam, removeFromTeam, delay } from './useFakeTeamServer'
 import type { PokemonDetail } from '@/shared/types/pokemon'
 
 export function TeamManager() {
@@ -122,16 +122,16 @@ export function TeamManager() {
                 <PokemonCard pokemon={p} />
                 <button
                   onClick={() => addMutation.mutate(p.name)}
-                  disabled={addMutation.isPending || isOnTeam(p.name)}
+                  disabled={addMutation.isPending || teamNames.includes(p.name)}
                   className={`mt-1 w-full rounded-xl px-2 py-1 text-xs font-semibold transition ${
-                    isOnTeam(p.name)
+                    teamNames.includes(p.name)
                       ? 'bg-green-100 text-green-700 cursor-default'
                       : addMutation.isPending && addMutation.variables === p.name
                       ? 'bg-blue-100 text-blue-500 cursor-wait'
                       : 'bg-blue-500 text-white hover:bg-blue-600 disabled:opacity-50'
                   }`}
                 >
-                  {isOnTeam(p.name)
+                  {teamNames.includes(p.name)
                     ? '✓ On Team'
                     : addMutation.isPending && addMutation.variables === p.name
                     ? 'Adding…'

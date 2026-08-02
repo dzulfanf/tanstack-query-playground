@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+import { useQueryClient } from '@tanstack/react-query'
 import { CacheSurgeryDemo } from '@/features/module-09/CacheSurgeryDemo'
 import { QueryInspector } from '@/features/inspector/QueryInspector'
 import { QueryActivity } from '@/features/activity/QueryActivity'
@@ -6,6 +8,7 @@ import { VisualDiagram09 } from '@/features/module-09/panels/VisualDiagram09'
 import { SourceCodePanel09 } from '@/features/module-09/panels/SourceCodePanel09'
 import { ModuleSummary09 } from '@/features/module-09/panels/ModuleSummary09'
 import { LearningTabs } from '@/shared/components/LearningTabs'
+import { resetTeam } from '@/features/module-08/useFakeTeamServer'
 
 const TABS = [
   { value: 'inspector', label: 'Insp', content: <QueryInspector /> },
@@ -16,6 +19,14 @@ const TABS = [
 ]
 
 export function Module09Page() {
+  const queryClient = useQueryClient()
+
+  useEffect(() => {
+    resetTeam()
+    void queryClient.invalidateQueries({ queryKey: ['m09', 'team'] })
+    return () => {}
+  }, [queryClient])
+
   return (
     <div className="flex flex-col gap-6 lg:flex-row">
       <div className="flex-1 min-w-0">

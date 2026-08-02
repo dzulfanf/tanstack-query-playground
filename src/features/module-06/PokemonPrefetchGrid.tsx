@@ -19,7 +19,7 @@ export function PokemonPrefetchGrid({ onSelect }: Props) {
   })
 
   const detailsQuery = useQuery({
-    queryKey: ['m06', 'details', listQuery.data?.results.map((p) => p.name)],
+    queryKey: ['m06', 'details'],
     queryFn: async () => {
       if (!listQuery.data) return []
       return Promise.all(listQuery.data.results.map((p) => fetchPokemon(p.name)))
