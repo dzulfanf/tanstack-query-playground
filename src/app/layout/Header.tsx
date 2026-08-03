@@ -9,6 +9,10 @@ const MODULES = [
   { id: '03', label: 'Query Keys', path: '/module/03' },
   { id: '04', label: 'Background Fetching', path: '/module/04' },
   { id: '05', label: 'Infinite Query', path: '/module/05' },
+  { id: '06', label: 'Prefetch', path: '/module/06' },
+  { id: '07', label: 'Dependent Query', path: '/module/07' },
+  { id: '08', label: 'Mutations', path: '/module/08' },
+  { id: '09', label: 'Advanced Cache', path: '/module/09' },
 ]
 
 export function Header() {
@@ -17,19 +21,20 @@ export function Header() {
 
   return (
     <header className="relative sticky top-0 z-50 glass-header">
-      <div className="mx-auto flex max-w-7xl items-center gap-2 px-4 py-3 sm:gap-6 sm:px-6">
-        <div className="flex items-center">
+      <div className="mx-auto flex max-w-[88rem] items-center gap-2 px-4 py-3 sm:gap-2 sm:px-4">
+        <div className="flex shrink-0 items-center">
           <span className="text-lg font-extrabold text-blue-500">TanStack Query <span className="text-sm font-medium text-white">Playground</span></span>
         </div>
 
-        <nav className="hidden sm:flex gap-1">
+        <nav className="hidden sm:flex flex-nowrap gap-0.5">
           {MODULES.map((mod) => (
             <Link
               key={mod.id}
               to={mod.path}
-              className="rounded-full px-4 py-1.5 text-sm font-medium text-gray-700 transition hover:bg-white/30 hover:text-blue-700 [&.active]:bg-white/40 [&.active]:text-blue-700 [&.active]:font-semibold"
+              className="whitespace-nowrap rounded-full px-2.5 py-1 text-xs font-medium text-gray-700 transition hover:bg-white/30 hover:text-blue-700 [&.active]:bg-white/40 [&.active]:text-blue-700 [&.active]:font-semibold"
             >
-              {mod.label}
+              <span className="xl:hidden">{mod.id}</span>
+              <span className="hidden xl:inline">{mod.label}</span>
             </Link>
           ))}
         </nav>

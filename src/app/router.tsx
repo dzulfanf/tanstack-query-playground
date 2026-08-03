@@ -6,6 +6,10 @@ import { PokemonDetailPage } from '@/features/module-02/PokemonDetailPage'
 import { Module03Page } from '@/features/module-03/Module03Page'
 import { Module04Page } from '@/features/module-04/Module04Page'
 import { Module05Page } from '@/features/module-05/Module05Page'
+import { Module06Page } from '@/features/module-06/Module06Page'
+import { Module07Page } from '@/features/module-07/Module07Page'
+import { Module08Page } from '@/features/module-08/Module08Page'
+import { Module09Page } from '@/features/module-09/Module09Page'
 
 const rootRoute = createRootRoute({ component: RootLayout })
 
@@ -51,6 +55,30 @@ export const module05Route = createRoute({
   component: Module05Page,
 })
 
+export const module06Route = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/module/06',
+  component: Module06Page,
+})
+
+export const module07Route = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/module/07',
+  component: Module07Page,
+})
+
+export const module08Route = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/module/08',
+  component: Module08Page,
+})
+
+export const module09Route = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/module/09',
+  component: Module09Page,
+})
+
 const routeTree = rootRoute.addChildren([
   indexRoute,
   module01Route,
@@ -59,6 +87,10 @@ const routeTree = rootRoute.addChildren([
   module03Route,
   module04Route,
   module05Route,
+  module06Route,
+  module07Route,
+  module08Route,
+  module09Route,
 ])
 
 export const router = createRouter({ routeTree })

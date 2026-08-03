@@ -46,3 +46,22 @@ export interface PokemonDetail {
   abilities: PokemonAbility[]
   sprites: PokemonSprites
 }
+
+export interface PokemonSpecies {
+  name: string
+  flavor_text_entries: Array<{
+    flavor_text: string
+    language: { name: string }
+  }>
+  evolution_chain: { url: string }
+}
+
+export interface ChainLink {
+  species: { name: string }
+  evolves_to: ChainLink[]
+}
+
+export interface EvolutionChain {
+  id: number
+  chain: ChainLink
+}
